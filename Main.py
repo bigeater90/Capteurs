@@ -1,52 +1,81 @@
 #-*-coding:utf8-*-
 
 from Capteur import *
-
-capteurs = input("Nombre de capteurs à créer : ")
+from random import *
 
 all_capteurs = []
 all_zones = []
 all_vie = []
 
-for i in range(1,capteurs+1) :
+def choixUtilisateur():
+	capteurs = input("Nombre de capteurs à créer : ")
 
-	val_zones = input("Entrez les zones : ")
-	while not(isinstance(val_zones,list)) :
-		print "Erreur premier paramètre : liste demandée."
+	for i in range(1,capteurs+1) :
+
 		val_zones = input("Entrez les zones : ")
+		while not(isinstance(val_zones,list)) :
+			print "Erreur premier paramètre : liste demandée."
+			val_zones = input("Entrez les zones : ")
 
-	val_vie = input("Entrez la durée de vie : ")
-	while not(isinstance(val_vie,int)) :
-		print "Erreur premier paramètre : liste demandée."
 		val_vie = input("Entrez la durée de vie : ")
+		while not(isinstance(val_vie,int)) :
+			print "Erreur premier paramètre : liste demandée."
+			val_vie = input("Entrez la durée de vie : ")
 
-	capt = Capteur(val_zones,val_vie)
+		capt = Capteur(val_zones,val_vie)
 
-	all_capteurs.append(capt)
+		all_capteurs.append(capt)
 
 	for obj in all_capteurs :
 		print "\n\n###Capteur ",all_capteurs.index(obj)+1," ### "
 		print "Zones : ",obj.zones
 		print "Durée de vie : ",obj.vie
 
+def choixAleatoire() :
+	capteurs = randint(1,10)					# on crée aléatoirement de 1 à 10 capteurs
+	nbZones = randint(1,10)  					# on crée aléatoirement de 1 à 10 zones
 
-	#print all_capteurs
-# 	i.zones = input("Entrez les zones : ")
-# 	while not(isinstance(i.zones,list)) :
-# 		print "Erreur premier paramètre : liste demandée."
-# 		i.zones = input("Entrez les zones : ")
+	
+	
+	# START DEBUG PART 
+	print "capteurs : " , capteurs
+	print " nbZones : " , nbZones
+	print
+	# END DEBUG PART
+	
+	for i in range(1,capteurs+1) :
+		val_vie = randint(1,10) 					# on crée aléatoirement une durée de vie de 1 à 10 unités
+		val_zones = []
+		nbZonesCapteur = randint(1,nbZones)		# on sélectionne le nombre de zones surveillés par le capteur
+		for j in range(1,nbZonesCapteur+1) :
+			a = randint(1,nbZones)
+			if a not in val_zones :
+				val_zones.append(a) 			# on sélectionne les zones surveillés en fonction de nbZonesCapteur
+	
+		# START DEBUG PART	
+# 		print "capteur " , i
+# 		print "------------"
+# 		print " zones : " , val_zones
+# 		print " durée de vie : " , vie
+# 		print
+		# END DEBUG PART
+		
+		capt = Capteur(val_zones,val_vie)
 
-# 	i.vie = input("Entrez la durée de vie : ")
-# 	while not(isinstance(i.vie,list)) :
-# 		print "Erreur premier paramètre : liste demandée."
-# 		i.vie = input("Entrez la durée de vie : ")
+		all_capteurs.append(capt)
 
-# 	all_zones.append(i.zones)
-# 	all_vie.append(i.vie)
+	for obj in all_capteurs :
+		print "\n\n###Capteur ",all_capteurs.index(obj)+1," ### "
+		print "Zones : ",obj.zones
+		print "Durée de vie : ",obj.vie
+		
+choixAleatoire()
 
 
-# print all_zones
-# print all_vie
+
+	
+	
+
 
 
 
