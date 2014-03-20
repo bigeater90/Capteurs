@@ -24,5 +24,5 @@ class Capteur :
 		print "Champ 'vie' mis à jour."
 
 	def show(self) :
-		print self.zones
-		print self.vie
+		self.getZones()
+		self.getVie()
