@@ -26,12 +26,14 @@ for i in range(1,capteurs+1) :
 
 	all_capteurs.append(capt)
 
+# for obj in all_capteurs :
+# 	
+# 	print "Zones : ",obj.zones
+# 	print "Durée de vie : ",obj.vie
+print "\n"
 for obj in all_capteurs :
-	print "\n\n### Capteur",all_capteurs.index(obj)+1,"###"
-	print "Zones : ",obj.zones
-	print "Durée de vie : ",obj.vie
-
-
+	print "### Capteur",all_capteurs.index(obj)+1,"###"
+	obj.show()
 
 
 

@@ -22,3 +22,7 @@ class Capteur :
 	def setVie(self,vie) :
 		self.vie = vie
 		print "Champ 'vie' mis à jour."
+
+	def show(self) :
+		print self.zones
+		print self.vie
