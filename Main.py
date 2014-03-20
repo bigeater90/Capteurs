@@ -11,7 +11,8 @@ def choixUtilisateur():
 	capteurs = input("Nombre de capteurs à créer : ")
 
 	for i in range(1,capteurs+1) :
-
+		
+		print "\n\n### Capteur",i,"###	 "
 		val_zones = input("Entrez les zones : ")
 		while not(isinstance(val_zones,list)) :
 			print "Erreur premier paramètre : liste demandée."
@@ -25,11 +26,12 @@ def choixUtilisateur():
 		capt = Capteur(val_zones,val_vie)
 
 		all_capteurs.append(capt)
+		
+		print "\n"
+		for obj in all_capteurs :
+			print "### Capteur",all_capteurs.index(obj)+1,"###"
+			obj.show()
 
-	for obj in all_capteurs :
-		print "\n\n###Capteur ",all_capteurs.index(obj)+1," ### "
-		print "Zones : ",obj.zones
-		print "Durée de vie : ",obj.vie
 
 def choixAleatoire() :
 	capteurs = randint(1,10)					# on crée aléatoirement de 1 à 10 capteurs
@@ -70,16 +72,3 @@ def choixAleatoire() :
 		print "Durée de vie : ",obj.vie
 		
 choixAleatoire()
-
-
-
-	
-	
-
-
-
-
-
-
-
-	
