@@ -23,13 +23,13 @@ def choixUtilisateur():
 			print "Erreur premier paramètre : liste demandée."
 			val_vie = input("Entrez la durée de vie : ")
 
-		capt = Capteur(val_zones,val_vie)
+		capt = Capteur(i,val_zones,val_vie)
 
 		all_capteurs.append(capt)
 		
-		print "\n"
+		print 
 		for obj in all_capteurs :
-			print "### Capteur",all_capteurs.index(obj)+1,"###"
+			print "### Capteur",i,"###"
 			obj.show()
 
 
@@ -39,36 +39,75 @@ def choixAleatoire() :
 
 	
 	
-	# START DEBUG PART 
+
 	print "capteurs : " , capteurs
 	print " nbZones : " , nbZones
 	print
-	# END DEBUG PART
 	
 	for i in range(1,capteurs+1) :
 		val_vie = randint(1,10) 					# on crée aléatoirement une durée de vie de 1 à 10 unités
 		val_zones = []
-		nbZonesCapteur = randint(1,nbZones)		# on sélectionne le nombre de zones surveillés par le capteur
+		nbZonesCapteur = randint(1,nbZones)		# on sélectionne le nombre de zones surveillées par le capteur
 		for j in range(1,nbZonesCapteur+1) :
 			a = randint(1,nbZones)
 			if a not in val_zones :
-				val_zones.append(a) 			# on sélectionne les zones surveillés en fonction de nbZonesCapteur
+				val_zones.append(a) 			# on sélectionne les zones surveillées en fonction de nbZonesCapteur
 	
-		# START DEBUG PART	
-# 		print "capteur " , i
-# 		print "------------"
-# 		print " zones : " , val_zones
-# 		print " durée de vie : " , vie
-# 		print
-		# END DEBUG PART
-		
-		capt = Capteur(val_zones,val_vie)
+		capt = Capteur(i,val_zones,val_vie)
 
 		all_capteurs.append(capt)
 
 	for obj in all_capteurs :
-		print "\n\n###Capteur ",all_capteurs.index(obj)+1," ### "
+		print "\n\n### Capteur ",obj.nombre," ### "
 		print "Zones : ",obj.zones
 		print "Durée de vie : ",obj.vie
 		
-choixAleatoire()
+
+
+
+def conf_elems() :
+
+	tous_les_capteurs = [Capteur(1,[2],5), Capteur(2,[2,3,4],6), Capteur(3,[1,3],7)]
+	toutes_les_zones = [1,2,3,4]
+	zones_actuelles = []
+	capteurs_utilises = []
+	conf_elems = []
+	elem = []
+	# for i in tous_les_capteurs :
+	# 	while toutes_les_zones != zones_actuelles :
+	# 		for j in i.zones :
+	# 			if j not in zones_actuelles :
+	# 				zones_actuelles.append(j)
+	# 		capteurs_utilises.append(i.nombre)
+
+	first_capt = 0
+
+	for i in tous_les_capteurs :
+		for j in tous_les_capteurs[tous_les_capteurs.index(i):] :
+			for k in i.zones :
+				if k not in zones_actuelles :
+					zones_actuelles.append(k)
+					if i.nombre not in capteurs_utilises :
+						capteurs_utilises.append(i.nombre)
+
+			if capteurs_utilises not in conf_elems :
+				conf_elems.append(capteurs_utilises)
+
+			first_capt += 1
+	
+	print "zones couvertes : ",zones_actuelles
+	print "capteurs utilisés : ", capteurs_utilises
+	print "configurations élémentaires : ",conf_elems
+
+
+
+#choixAleatoire()
+
+conf_elems()
+
+
+
+
+
+
+

@@ -4,24 +4,12 @@ import sys
 
 class Capteur :
 
-	def __init__(self,zones,vie) :
+	def __init__(self,nombre,zones,vie) :
 		
+		self.nombre = nombre
 		self.zones = zones
 		self.vie = vie
 
-	def getZones(self) :
-		print self.zones
-
-	def setZones(self,zones) :
-		self.zones = zones
-		print "Champ 'zones' mis à jour."
-
-	def getVie(self) :
-		print self.vie
-
-	def setVie(self,vie) :
-		self.vie = vie
-		print "Champ 'vie' mis à jour."
 
 	def show(self) :
 		self.getZones()
