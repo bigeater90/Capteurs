@@ -67,7 +67,7 @@ def choixAleatoire() :
 
 def conf_elems() :
 
-	tous_les_capteurs = [Capteur(1,[2],5), Capteur(2,[2,3,4],6), Capteur(3,[1,3],7)]
+	tous_les_capteurs = [Capteur(1,[2],5), Capteur(2,[2,3,4],6), Capteur(3,[1,3],7), Capteur(4,[1,3,4],8)]
 	toutes_les_zones = [1,2,3,4]
 	zones_actuelles = []
 	capteurs_utilises = []
@@ -80,20 +80,24 @@ def conf_elems() :
 	# 				zones_actuelles.append(j)
 	# 		capteurs_utilises.append(i.nombre)
 
-	first_capt = 0
+	fin_capteurs = False
 
-	for i in tous_les_capteurs :
-		for j in tous_les_capteurs[tous_les_capteurs.index(i):] :
-			for k in i.zones :
-				if k not in zones_actuelles :
-					zones_actuelles.append(k)
-					if i.nombre not in capteurs_utilises :
-						capteurs_utilises.append(i.nombre)
+	while zones_actuelles != toutes_les_zones  and not fin_capteurs:
 
-			if capteurs_utilises not in conf_elems :
-				conf_elems.append(capteurs_utilises)
+		for i in tous_les_capteurs :
+			print "New i : ",i.nombre
+			for j in tous_les_capteurs[tous_les_capteurs.index(i):] :
+				print "j : ",j.nombre
+				for k in i.zones :
+					if k not in zones_actuelles :
+						zones_actuelles.append(k)
+						if i.nombre not in capteurs_utilises :
+							capteurs_utilises.append(i.nombre)
 
-			first_capt += 1
+				if capteurs_utilises not in conf_elems :
+					conf_elems.append(capteurs_utilises)
+
+		fin_capteurs = True
 	
 	print "zones couvertes : ",zones_actuelles
 	print "capteurs utilisés : ", capteurs_utilises
