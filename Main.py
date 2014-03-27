@@ -108,7 +108,7 @@ def conf_elems() :
 
 
 
-#choixAleatoire()
+choixAleatoire()
 
 conf_elems()
 
