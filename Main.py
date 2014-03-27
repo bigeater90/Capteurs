@@ -88,16 +88,19 @@ def conf_elems() :
 			print "New i : ",i.nombre
 			for j in tous_les_capteurs[tous_les_capteurs.index(i):] :
 				print "j : ",j.nombre
-				for k in i.zones :
+				for k in j.zones :
 					if k not in zones_actuelles :
 						zones_actuelles.append(k)
-						if i.nombre not in capteurs_utilises :
-							capteurs_utilises.append(i.nombre)
+						print "ajout zone : ",k
+						if j.nombre not in capteurs_utilises :
+							capteurs_utilises.append(j.nombre)
 
 				if capteurs_utilises not in conf_elems :
 					conf_elems.append(capteurs_utilises)
 
-		fin_capteurs = True
+			zones_actuelles = []
+
+		fin_capteurs = True	
 	
 	print "zones couvertes : ",zones_actuelles
 	print "capteurs utilisés : ", capteurs_utilises
