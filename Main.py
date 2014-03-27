@@ -61,6 +61,7 @@ def choixAleatoire() :
 		print "\n\n### Capteur ",obj.nombre," ### "
 		print "Zones : ",obj.zones
 		print "Durée de vie : ",obj.vie
+	return all_capteurs
 		
 
 
@@ -106,11 +107,27 @@ def conf_elems() :
 	print "capteurs utilisés : ", capteurs_utilises
 	print "configurations élémentaires : ",conf_elems
 
+def elementaire(all_capteurs) :
+	zones_couvertes = []
+	radars_elementaires = []
 
+	for i in all_capteurs :
+		parcourir = "true"
+		while parcourir == "true" :
+			parcourir2 = "true"
+			for j in i.zones :
+				if j not in zones_couvertes and parcourir2 == "true":
+					radars_elementaires.append(i.nombre)
+					zones_couvertes += i.zones
+					parcourir2 = "false"
+			parcourir = "false"
+		return radars_elementaires
 
-choixAleatoire()
+listeRadars = choixAleatoire()
+print "liste radars : ",listeRadars
+print elementaire(listeRadars)
 
-conf_elems()
+#conf_elems()
 
 
 
